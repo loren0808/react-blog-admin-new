@@ -1,0 +1,113 @@
+@import '../../assets/styles/style.scss';
+
+.NavBox {
+  @extend .trans;
+  position: fixed;
+  z-index: 999;
+  top: 0px;
+  width: 180px;
+  height: 100%;
+  background-color: #ffffff;
+  color: #696969;
+  box-shadow: 2px 0px 10px 1px rgba(0, 0, 0, 0.05);
+}
+
+/* 导航上方标题 */
+.appName {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  color: $ant-primary-6;
+  font-weight: bold;
+  top: 14px;
+  height: 40px;
+  width: 100%;
+  line-height: 40px;
+  text-align: center;
+  font-size: 18px;
+}
+
+/* ul */
+.funcBtns {
+  position: absolute;
+  top: 68px;
+  width: 100%;
+  padding: 0;
+}
+
+.funcBtns li {
+  width: 100%;
+  height: 40px;
+  font-size: 14px;
+  transition: all 0.2s;
+  list-style: none;
+  .funcLi {
+    // width不包含padding border
+    box-sizing: border-box;
+    color: #696969;
+    height: 100%;
+    width: 100%;
+    padding-left: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-decoration: none;
+    cursor: default;
+  }
+
+  .funcLi:hover {
+    color: $ant-primary-6;
+  }
+  .navActive {
+    color: $ant-primary-6;
+    background-color: $ant-primary-1;
+    //   box-shadow: 0 0 14px rgba(0, 0, 0, 0.8) inset;
+    @extend .funcLi;
+  }
+}
+
+.funcBtns li .navActive::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 2px;
+  height: 40px;
+  background-color: $ant-primary-6;
+  animation: in 0.2s;
+}
+
+.icon{
+  font-size: 18px;
+  margin-right:10px;
+}
+.topIcon{
+  font-size: 40px;
+  margin-right: 10px;
+}
+// 蓝条动画
+@keyframes in {
+  from {
+    height: 0;
+  }
+  to {
+    height: 40px;
+  }
+}
+
+@media screen and (max-width:1000px) {
+    .NavBox{
+      width: 50px;
+    }
+    .topIcon{
+      margin-right: 0px;
+    }
+    .appName{
+      font-size: 0;
+    }
+    .funcBtns li {
+      .funcLi {
+        padding-left: 15px;
+        font-size: 0;
+      }
+    }
+}

@@ -1,0 +1,58 @@
+.headBox {
+  background-color: #fff;
+  padding: 10px;
+  .bottom,
+  .top {
+    .topBox {
+      margin-right: 10px;
+    }
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 10px;
+  }
+  .bottom {
+    margin-top: 10px;
+    .tags{
+      margin-right: 10px;
+    }
+    .series{
+      margin-right: 10px;
+    }
+  }
+}
+
+/* ———————————————————————————编辑区大盒子——————————————————————————— */
+.editBox {
+  display: flex;
+  flex-direction: row;
+}
+
+.inputTitle {
+  padding: 6px;
+  outline: none;
+  border: none;
+  height: 30px;
+  font-size: 30px;
+}
+
+/* 编辑/显示区 */
+.inputRegion,
+.showRegion {
+  min-height: calc(100vh - 70px - 54px - 20px - 58px - 44px);
+  width: 50%;
+  padding: 20px;
+  font-size: 18px;
+  word-break: break-word;
+}
+
+.inputRegion {
+  background-color: #fff;
+  outline: none;
+  overflow-y: hidden;
+  // border-right: 1px solid black;
+}
+
+.showRegion {
+  // background-color: #c5c5c5;
+}

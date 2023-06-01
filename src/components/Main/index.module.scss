@@ -1,0 +1,13 @@
+@import '../../assets/styles/style.scss';
+
+.main {
+  @extend .trans;
+  min-height: 100%;
+  margin-left: 180px;
+  user-select: text;
+}
+@media screen and (max-width:1000px) {
+  .main{
+    margin-left: 50px;
+  }
+}

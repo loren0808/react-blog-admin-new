@@ -1,0 +1,11 @@
+@import '../../assets/styles/base.scss';
+
+.loadingBox {
+  height: calc(100vh - 62px - 10px * 2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  color: $ant-primary-5;
+  font-size: 50px;
+}
