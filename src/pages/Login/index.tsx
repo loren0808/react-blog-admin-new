@@ -13,6 +13,7 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState('');
   const handleLogin = async () => {
     try {
+      if (!username || !password) return;
       const { data } = await userLogin({ username, password });
       if (data.code === 1) {
         Message.success(data.msg);
