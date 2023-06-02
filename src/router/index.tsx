@@ -2,16 +2,11 @@ import RequireAuth from '@/components/RequireAuth';
 import Article from '@/pages/Admin/Article';
 import Articles from '@/pages/Admin/Articles';
 import Home from '@/pages/Admin/Home';
+import MD from '@/pages/Admin/VditorBox';
 import { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
-const Admin = lazy(
-  () =>
-    import(/* webpackChunkName:'Admin', webpackPrefetch:true */ '@/pages/Admin')
-);
-const Login = lazy(
-  () =>
-    import(/* webpackChunkName:'Login', webpackPrefetch:true */ '@/pages/Login')
-);
+const Admin = lazy(() => import('@/pages/Admin'));
+const Login = lazy(() => import('@/pages/Login'));
 const routes = [
   {
     path: '/',
@@ -40,7 +35,7 @@ const routes = [
       {
         path: 'articles',
         element: <Articles />
-      }
+      },
     ]
   },
   {

@@ -3,11 +3,12 @@
 .main {
   @extend .trans;
   min-height: 100%;
+  height: 100%;
   margin-left: 180px;
   user-select: text;
 }
-@media screen and (max-width:1000px) {
-  .main{
+@media screen and (max-width: 1000px) {
+  .main {
     margin-left: 50px;
   }
 }

@@ -17,6 +17,7 @@ import {
 } from '@/redux/features/article/articlesSlice';
 import { useOtherData } from '@/utils/hooks/useOtherData';
 import dayjs from 'dayjs';
+import VditorShow from '@/components/VditorEdit';
 const Article: React.FC = () => {
   const dispatch = useAppDispatch();
   useOtherData();
@@ -64,7 +65,6 @@ const Article: React.FC = () => {
     dispatch(editReset());
   };
   useEffect(() => {
-    setText(edit.text);
     setTitle(edit.title);
     setDate(dayjs(edit.create_at || dayjs()).format('YYYY-MM-DD HH:mm:ss'));
     if (
@@ -83,7 +83,6 @@ const Article: React.FC = () => {
         .map((tag) => tag._id)
         .filter((tagId) => tagList.some(({ _id }) => tagId === _id))
     );
-    inputBox.current.innerText = edit.text;
   }, [seriesList, tagList, edit]);
 
   return (
@@ -170,9 +169,10 @@ const Article: React.FC = () => {
       </div>
 
       {/* 内容编辑区 */}
+      <VditorShow onChange={setText} />
       <div className={s.editBox}>
         {/* 输入区 */}
-        <div
+        {/* <div
           ref={inputBox}
           className={s.inputRegion}
           onInput={(e) => {
@@ -180,11 +180,11 @@ const Article: React.FC = () => {
           }}
           contentEditable="true"
           suppressContentEditableWarning={true}
-        />
+        /> */}
         {/* 展示区 */}
-        <div className={s.showRegion}>
+        {/* <div className={s.showRegion}>
           <MarkDown content={text} />
-        </div>
+        </div> */}
       </div>
     </>
   );
