@@ -20,22 +20,20 @@ export default ({ requireLogin, to, children }: Props) => {
   } else {
     const tokenFromLocalStorage = window.localStorage.getItem('__token');
     if (tokenFromLocalStorage) {
-      auth(tokenFromLocalStorage)
-        .then((res) => {
-          if (res.status === 200) {
-            dispatch(
-              receiveToken({
-                token: res.data.token,
-                refreshToken: res.data.refreshToken
-              })
-            );
-            window.localStorage.setItem('__token', res.data.refreshToken);
-            navigate('/admin/home');
-          }
-        })
+      auth(tokenFromLocalStorage).then((res) => {
+        if (res.status === 200) {
+          dispatch(
+            receiveToken({
+              token: res.data.token,
+              refreshToken: res.data.refreshToken
+            })
+          );
+          window.localStorage.setItem('__token', res.data.refreshToken);
+          navigate(location.pathname);
+        }
+      });
     }
   }
-  console.log(isLogin);
   return isLogin ? (
     children
   ) : (

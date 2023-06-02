@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host --port 3000",
-    "build": "vite build",
+    "dev": "cross-env NODE_ENV=development vite --host --port 3000",
+    "build": "cross-env NODE_ENV=production vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -36,6 +36,7 @@
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
     "@vitejs/plugin-react": "^4.0.0",
+    "cross-env": "^7.0.3",
     "eslint": "^8.38.0",
     "eslint-config-alloy": "4.5.1",
     "eslint-plugin-react": "7.29.3",
