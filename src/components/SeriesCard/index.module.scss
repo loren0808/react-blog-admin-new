@@ -19,14 +19,6 @@
   overflow: scroll;
   overflow-x: hidden;
 }
-.seriesTag {
-  @extend .hover;
-  padding: 3px;
-  border-radius: 3px;
-}
-.seriesTag:hover {
-  color: #fff;
-}
 
 .seriesList::-webkit-scrollbar {
   width: 4px;

@@ -38,7 +38,7 @@
 .funcBtns li {
   width: 100%;
   height: 40px;
-  font-size: 14px;
+  font-size: 16px;
   transition: all 0.2s;
   list-style: none;
   .funcLi {
@@ -76,13 +76,27 @@
   animation: in 0.2s;
 }
 
-.icon{
+.icon {
   font-size: 18px;
-  margin-right:10px;
+  margin-right: 10px;
 }
-.topIcon{
+.topIcon {
   font-size: 40px;
   margin-right: 10px;
+}
+
+.exit {
+  position: absolute;
+  bottom: 10px;
+  font-size: 16px;
+  width: calc(100% - 20px);
+  padding-top: 10px;
+  margin: 0 10px;
+  text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+.exit:hover {
+  color: $ant-primary-6;
 }
 // 蓝条动画
 @keyframes in {
@@ -94,20 +108,23 @@
   }
 }
 
-@media screen and (max-width:1000px) {
-    .NavBox{
-      width: 50px;
-    }
-    .topIcon{
-      margin-right: 0px;
-    }
-    .appName{
+@media screen and (max-width: 1000px) {
+  .NavBox {
+    width: 50px;
+  }
+  .topIcon {
+    margin-right: 0px;
+  }
+  .appName {
+    font-size: 0;
+  }
+  .funcBtns li {
+    .funcLi {
+      padding-left: 15px;
       font-size: 0;
     }
-    .funcBtns li {
-      .funcLi {
-        padding-left: 15px;
-        font-size: 0;
-      }
-    }
+  }
+  .exit{
+    // font-size: 0;
+  }
 }

@@ -1,0 +1,10 @@
+@import '../../assets/styles/style.scss';
+.seriesTag {
+  @extend .hover;
+  word-wrap: break-word;
+  padding: 0px 8px 0px 8px;
+  border-radius: 8px;
+}
+.seriesTag:hover {
+  color: #fff;
+}

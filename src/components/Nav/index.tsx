@@ -3,12 +3,17 @@ import { NavLink } from 'react-router-dom';
 import {
   IconApps,
   IconDriveFile,
+  IconExport,
   IconList,
   IconQqZone
 } from '@arco-design/web-react/icon';
 import s from './index.module.scss';
+import { Button } from '@arco-design/web-react';
+import { useAppDispatch } from '@/redux/hooks';
+import { resetToken } from '@/redux/features/article/userSlice';
 
 const Nav: React.FC = () => {
+  const dispatch = useAppDispatch();
   const router = [
     {
       to: '/admin/home',
@@ -32,7 +37,7 @@ const Nav: React.FC = () => {
       to: '/admin/articles',
       content: (
         <>
-          <IconList  className={s.icon} />
+          <IconList className={s.icon} />
           文章
         </>
       )
@@ -66,10 +71,13 @@ const Nav: React.FC = () => {
       content: "草稿箱",
     }, */
   ];
+  const exit = () => {
+    window.localStorage.setItem('__token', '');
+    dispatch(resetToken());
+  };
   return (
     <div className={s.NavBox}>
       <div className={s.appName}>
-        
         <IconQqZone className={s.topIcon} />
         <div>欢迎您</div>
       </div>
@@ -86,6 +94,10 @@ const Nav: React.FC = () => {
           </li>
         ))}
       </ul>
+      <div className={s.exit} onClick={() => exit()}>
+        <IconExport />
+        <span>退出登录</span>
+      </div>
     </div>
   );
 };

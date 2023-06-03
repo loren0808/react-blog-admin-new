@@ -12,6 +12,7 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import s from './index.module.scss';
 import { IconDelete } from '@arco-design/web-react/icon';
 import { update } from '@/redux/features/article/articlesSlice';
+import ListItem from '../ListItem';
 interface SeriesCardProps {
   seriesRun: () => void;
   seriesLoading: boolean;
@@ -97,19 +98,7 @@ const SeriesCard: React.FC<SeriesCardProps> = ({
                   />
                 }
               >
-                <div style={{ display: 'flex' }}>
-                  <Avatar size={32}>{item.article.length}</Avatar>
-                  <div
-                    style={{
-                      flex: '1',
-                      overflow: 'hidden',
-                      lineHeight: '32px',
-                      textAlign: 'center'
-                    }}
-                  >
-                    <span className={s.seriesTag}>{item.name}</span>
-                  </div>
-                </div>
+                <ListItem total={item.article.length} name={item.name} />
               </List.Item>
             )}
           />

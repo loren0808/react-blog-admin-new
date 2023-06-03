@@ -17,6 +17,7 @@ import {
 import { useOtherData } from '@/utils/hooks/useOtherData';
 import dayjs from 'dayjs';
 import VditorShow from '@/components/VditorEdit';
+import { useUnmount } from 'ahooks';
 const Article: React.FC = () => {
   const dispatch = useAppDispatch();
   useOtherData();
@@ -81,7 +82,8 @@ const Article: React.FC = () => {
         tag: tagList.filter((tagObj) => tag?.some((id) => tagObj._id === id)),
         create_at: edit.create_at,
         text,
-        view: edit.view
+        view: edit.view,
+        state: edit.state
       })
     );
   };
@@ -89,6 +91,7 @@ const Article: React.FC = () => {
     dispatch(editReset());
   };
   useEffect(() => {
+    console.log(edit.tag);
     setTitle(edit.title);
     setDate(dayjs(edit.create_at || dayjs()).format('YYYY-MM-DD HH:mm:ss'));
     if (
@@ -109,7 +112,10 @@ const Article: React.FC = () => {
     );
     setText(edit.text);
   }, [seriesList, tagList, edit]);
-
+  // 离开页面保存数据
+  useUnmount(() => {
+    handleSave();
+  });
   return (
     <>
       <div className={s.headBox}>
@@ -183,7 +189,7 @@ const Article: React.FC = () => {
             }))}
           />
           <Input
-            addBefore="时间"
+            addBefore="上次保存时间"
             value={date}
             disabled
             placeholder="YYYY-MM-DD HH:mm:ss"
