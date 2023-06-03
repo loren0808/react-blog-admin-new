@@ -12,6 +12,7 @@ interface ArticlesState {
     text: string;
     create_at: string;
     view: number;
+    state: string;
   };
   needUpdate: boolean;
 }
@@ -26,7 +27,8 @@ const initialState: ArticlesState = {
     series: [],
     text: '',
     create_at: '',
-    view: 0
+    view: 0,
+    state: ''
   },
   needUpdate: true
 };

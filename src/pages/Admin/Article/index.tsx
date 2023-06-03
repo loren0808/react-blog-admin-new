@@ -8,8 +8,7 @@ import {
   Message
 } from '@arco-design/web-react';
 import s from './index.module.scss';
-import { addArticle } from '@/utils/apis/articles';
-import MarkDown from '@/components/MarkDown';
+import { addArticle, updateArticleById } from '@/utils/apis/articles';
 import {
   editArticle,
   editReset,
@@ -29,13 +28,37 @@ const Article: React.FC = () => {
   const [series, setSeries] = useState('');
   const [date, setDate] = useState('');
   const [tag, setTag] = useState([]);
-  const inputBox = useRef(null);
   const confirm = () => {
-    if (!text || !title) {
+    if (!text || !title || !series) {
       Message.error('请完善文章信息');
       return;
     }
     addArticle({
+      series,
+      title,
+      text,
+      tag
+    })
+      .then((res) => {
+        console.log({
+          series,
+          title,
+          text,
+          tag
+        });
+        Message.success(res.data.data);
+        dispatch(update(true));
+        dispatch(editReset());
+      })
+      .catch((err) => Message.error('出错了'));
+  };
+  const updateArticle = () => {
+    if (!text || !title) {
+      Message.error('请完善文章信息');
+      return;
+    }
+    updateArticleById({
+      articleId: edit._id,
       series,
       title,
       text,
@@ -47,6 +70,7 @@ const Article: React.FC = () => {
         dispatch(editReset());
       })
       .catch((err) => Message.error('出错了'));
+    console.log('更新文章');
   };
   const handleSave = () => {
     dispatch(
@@ -83,6 +107,7 @@ const Article: React.FC = () => {
         .map((tag) => tag._id)
         .filter((tagId) => tagList.some(({ _id }) => tagId === _id))
     );
+    setText(edit.text);
   }, [seriesList, tagList, edit]);
 
   return (
@@ -100,13 +125,13 @@ const Article: React.FC = () => {
           />
           <Popconfirm
             position="br"
-            title="确定要提交该文章吗？"
-            onOk={confirm}
+            title={`确定要${edit.state ? '修改' : '提交'}该文章吗？`}
+            onOk={edit.state ? updateArticle : confirm}
             okText="Yes"
             cancelText="No"
           >
             <Button type="primary" size="large" style={{ marginRight: '10px' }}>
-              提交
+              {edit.state ? '修改' : '提交'}
             </Button>
           </Popconfirm>
           <Button
@@ -128,7 +153,7 @@ const Article: React.FC = () => {
             size="large"
             className={s.series}
             allowCreate={false}
-            showSearch
+            // showSearch
             allowClear
             unmountOnExit={false}
             value={series}
@@ -146,7 +171,7 @@ const Article: React.FC = () => {
             maxTagCount={6}
             mode="multiple"
             allowCreate={false}
-            showSearch
+            // showSearch
             allowClear
             unmountOnExit={false}
             value={tag}

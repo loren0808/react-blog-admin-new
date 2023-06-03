@@ -8,7 +8,6 @@ import './assets/styles/global.scss';
 import App from './App.tsx';
 import store from '@/redux/store';
 import { Provider } from 'react-redux';
-import React from 'react';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <BrowserRouter>

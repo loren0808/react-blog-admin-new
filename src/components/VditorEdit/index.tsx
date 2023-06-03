@@ -67,7 +67,7 @@ const VditorEdit: React.FC<VditorEditProps> = ({ onChange }) => {
         enable: true
       },
       after: () => {
-        const textFromLocalStorage = window.localStorage.getItem('vditor');
+        const textFromLocalStorage = window.localStorage.getItem('__vditor');
         if (text) {
           vditor.setValue(text);
         } else if (textFromLocalStorage) {

@@ -1,35 +1,45 @@
-.main{
+@import '../../assets/styles/style.scss';
+.main {
   display: flex;
 }
 
-.seriesBox{
+.seriesBox {
   margin: 10px;
   padding: 10px;
   background-color: #fff;
   width: 300px;
   height: 500px;
 }
-.seriesList{
+.seriesList {
   height: 460px;
   user-select: none;
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
   overflow: scroll;
-  overflow-x:hidden;
+  overflow-x: hidden;
 }
+.seriesTag {
+  @extend .hover;
+  padding: 3px;
+  border-radius: 3px;
+}
+.seriesTag:hover {
+  color: #fff;
+}
+
 .seriesList::-webkit-scrollbar {
   width: 4px;
 }
 .seriesList::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background: rgba(0,0,0,0.2);
+  background: rgba(0, 0, 0, 0.2);
 }
 .seriesList::-webkit-scrollbar-track {
   border-radius: 0;
-  background: rgba(0,0,0,0);
+  background: rgba(0, 0, 0, 0);
 }
-.boxHead{
+.boxHead {
   display: flex;
   margin-bottom: 10px;
 }

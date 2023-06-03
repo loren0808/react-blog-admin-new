@@ -28,20 +28,20 @@ const MyTable: React.FC<MyTableProps> = ({
   <>
     <div className={classNames(s.myTableBox, { [s.noHeader]: noHeader })}>
       <Table
-      className={s.myTable}
+        className={s.myTable}
         border
         borderCell
         loading={loading}
         data={data}
         columns={columns}
         rowKey={(columns) => columns._id}
-        pagePosition='bottomCenter'
+        pagePosition="bottomCenter"
         pagination={false}
       />
     </div>
     <div className={s.paginationBox}>
       <Pagination
-        size='large'
+        size="large"
         current={page}
         total={total}
         pageSize={pageSize}

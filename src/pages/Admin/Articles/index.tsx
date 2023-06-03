@@ -8,6 +8,7 @@ import {
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import {
   editArticle,
+  editReset,
   receiveAllArticles,
   receiveTotal,
   update
@@ -36,7 +37,7 @@ const Articles: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [page, setPage] = useState(1);
-  const { articles, total, done, needUpdate } = useAppSelector(
+  const { articles, total, done, needUpdate, edit } = useAppSelector(
     (store) => store.articles
   );
   const { run: searchRun, loading } = useRequest(
@@ -54,6 +55,9 @@ const Articles: React.FC = () => {
   const handleDelete = async (_id: string) => {
     const { data } = await deleteArticleById(_id);
     if (data.data) {
+      if (_id === edit._id) {
+        dispatch(editReset());
+      }
       searchRun(page);
     } else {
       console.log('删除文章失败');
@@ -62,7 +66,7 @@ const Articles: React.FC = () => {
   const handleEdit = async (_id: string) => {
     const { data } = await getArticle(_id);
     if (data._id) {
-      dispatch(editArticle(data));
+      dispatch(editArticle({ ...data, state: 'edit' }));
       navigate(`/admin/article`);
     }
   };
@@ -73,7 +77,7 @@ const Articles: React.FC = () => {
         dataIndex: 'title'
       },
       {
-        title: '分类',
+        title: '合集',
         dataIndex: 'series',
         render: (series: TagAndSeries[]) =>
           series.map((series) => <Tag key={series._id}>{series.name}</Tag>)
@@ -94,7 +98,11 @@ const Articles: React.FC = () => {
         title: '操作',
         render: (_, { _id }) => (
           <>
-            <Button type="primary" onClick={() => handleEdit(_id)}>
+            <Button
+              type="primary"
+              style={{ marginRight: '20px' }}
+              onClick={() => handleEdit(_id)}
+            >
               编辑
             </Button>
             <Popconfirm

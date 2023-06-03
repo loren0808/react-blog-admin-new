@@ -13,7 +13,13 @@ interface getAllArticlesParams {
   count: number;
   page: number;
 }
-
+interface ArticleToModify {
+  articleId: string;
+  series: string;
+  title: string;
+  text: string;
+  tag: string[];
+}
 // 添加文章
 export const addArticle = (params: Article) =>
   ajax(articleBaseUrl, '/add', params, 'post');
@@ -26,6 +32,8 @@ export const getTotal = () => ajax(articleBaseUrl, '/get/total');
 export const deleteArticleById = (params: string) =>
   ajax(articleBaseUrl, '/delete', { articleId: params }, 'delete');
 // 获得文章详细信息
-export const getArticle = (params: string) => 
+export const getArticle = (params: string) =>
   ajax(articleBaseUrl, '/get/articleById', { articleId: params });
-
+// 修改文章
+export const updateArticleById = (params: ArticleToModify) =>
+  ajax(articleBaseUrl, '/modify', params, 'post');

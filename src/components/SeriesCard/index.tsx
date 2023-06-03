@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import { addSeries, deleteSeries } from '@/utils/apis/series';
-import { Button, Input, Tag, Message } from '@arco-design/web-react';
+import {
+  Button,
+  Input,
+  Tag,
+  Message,
+  List,
+  Avatar
+} from '@arco-design/web-react';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import s from './index.module.scss';
 import { IconDelete } from '@arco-design/web-react/icon';
@@ -13,7 +20,7 @@ const SeriesCard: React.FC<SeriesCardProps> = ({
   seriesRun,
   seriesLoading
 }) => {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
   const [seriesName, setSeriesName] = useState('');
   const [disabled, setDisabled] = useState(false);
   const { series } = useAppSelector((store) => store.series);
@@ -68,7 +75,45 @@ const SeriesCard: React.FC<SeriesCardProps> = ({
           </Button>
         </div>
         <div className={s.seriesList}>
-          {series.map((series) => (
+          <List
+            wrapperStyle={{ width: '100%' }}
+            dataSource={series}
+            bordered={false}
+            render={(item) => (
+              <List.Item
+                style={{
+                  padding: '5px',
+                  alignItems: 'center'
+                }}
+                key={item._id}
+                extra={
+                  <Button
+                    shape="circle"
+                    icon={<IconDelete />}
+                    status="danger"
+                    onClick={() => {
+                      handleDelete(item._id);
+                    }}
+                  />
+                }
+              >
+                <div style={{ display: 'flex' }}>
+                  <Avatar size={32}>{item.article.length}</Avatar>
+                  <div
+                    style={{
+                      flex: '1',
+                      overflow: 'hidden',
+                      lineHeight: '32px',
+                      textAlign: 'center'
+                    }}
+                  >
+                    <span className={s.seriesTag}>{item.name}</span>
+                  </div>
+                </div>
+              </List.Item>
+            )}
+          />
+          {/* {series.map((series) => (
             <Tag
               key={series._id}
               style={{ margin: '0 10px 10px 0 ' }}
@@ -79,7 +124,7 @@ const SeriesCard: React.FC<SeriesCardProps> = ({
             >
               {series.name}
             </Tag>
-          ))}
+          ))} */}
         </div>
       </div>
     </div>

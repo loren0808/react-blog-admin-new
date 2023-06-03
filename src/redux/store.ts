@@ -3,6 +3,7 @@ import articlesReducer from './features/article/articlesSlice';
 import tagsReducer from './features/article/tagsSlice';
 import seriesReducer from './features/article/seriesSlice';
 import userReducer from './features/article/userSlice';
+import { isDevelopment } from '@/constant';
 const store = configureStore({
   // 默认包含异步中间件
   reducer: {
@@ -10,7 +11,8 @@ const store = configureStore({
     tags: tagsReducer,
     series: seriesReducer,
     user: userReducer
-  }
+  },
+  devTools: isDevelopment
 });
 export default store;
 
