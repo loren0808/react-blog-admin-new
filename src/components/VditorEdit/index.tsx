@@ -1,7 +1,5 @@
 import { useAppSelector } from '@/redux/hooks';
-import { after } from 'node:test';
 import React, { useEffect, useRef, useState } from 'react';
-import { text } from 'stream/consumers';
 import Vditor from 'vditor';
 import 'vditor/dist/index.css';
 import s from './index.module.scss';
@@ -14,7 +12,7 @@ const VditorEdit: React.FC<VditorEditProps> = ({ onChange }) => {
   const editorRef = useRef<HTMLDivElement>(null);
   const { text } = useAppSelector((store) => store.articles.edit);
   useEffect(() => {
-    const vditor = new Vditor(editorRef.current, {
+    const vditor = new Vditor(editorRef.current!, {
       input: (value) => onChange(value),
       toolbar: [
         'emoji',
@@ -61,13 +59,20 @@ const VditorEdit: React.FC<VditorEditProps> = ({ onChange }) => {
           ]
         }
       ],
+      // preview: {
+      //   hljs: {
+      //     style: 'github-dark'
+      //   }
+      // },
       cache: { id: '__vditor' },
       height: 'calc(100% - 102px)',
       counter: { enable: true },
       outline: {
+        position: 'left',
         enable: true
       },
       after: () => {
+        console.log('after');
         const textFromLocalStorage = window.localStorage.getItem('__vditor');
         if (text) {
           vditor.setValue(text);

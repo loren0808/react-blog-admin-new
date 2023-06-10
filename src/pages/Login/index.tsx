@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import s from './index.module.scss';
 import { userLogin } from '@/utils/apis/auth';
 import { useAppDispatch } from '@/redux/hooks';
-import { receiveToken } from '@/redux/features/article/userSlice';
+import { receiveToken } from '@/redux/features/userSlice';
 import { useNavigate } from 'react-router-dom';
 
 const Login: React.FC = () => {

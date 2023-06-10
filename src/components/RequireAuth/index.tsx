@@ -1,4 +1,4 @@
-import { receiveToken } from '@/redux/features/article/userSlice';
+import { receiveToken } from '@/redux/features/userSlice';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { auth } from '@/utils/apis/axios';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';

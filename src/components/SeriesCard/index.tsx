@@ -11,7 +11,7 @@ import {
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import s from './index.module.scss';
 import { IconDelete } from '@arco-design/web-react/icon';
-import { update } from '@/redux/features/article/articlesSlice';
+import { update } from '@/redux/features/articlesSlice';
 import ListItem from '../ListItem';
 interface SeriesCardProps {
   seriesRun: () => void;

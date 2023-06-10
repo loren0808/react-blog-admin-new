@@ -3,7 +3,7 @@ import { addTag, deleteTag, getAllTags } from '@/utils/apis/tags';
 import { useRequest } from 'ahooks';
 import { Button, Input, Select, Tag } from '@arco-design/web-react';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import { receiveAllTags } from '@/redux/features/article/tagsSlice';
+import { receiveAllTags } from '@/redux/features/tagsSlice';
 import s from './index.module.scss';
 import { IconDelete } from '@arco-design/web-react/icon';
 import TagCard from '@/components/TagCard';

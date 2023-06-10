@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { baseUrl } from '@/constant';
 import store from '@/redux/store';
-import { receiveToken, resetToken } from '@/redux/features/article/userSlice';
+import { receiveToken, resetToken } from '@/redux/features/userSlice';
 
 // let token = '';
 axios.interceptors.request.use((config) => {

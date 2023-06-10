@@ -9,14 +9,10 @@ import {
 } from '@arco-design/web-react';
 import s from './index.module.scss';
 import { addArticle, updateArticleById } from '@/utils/apis/articles';
-import {
-  editArticle,
-  editReset,
-  update
-} from '@/redux/features/article/articlesSlice';
+import { editArticle, editReset, update } from '@/redux/features/articlesSlice';
 import { useOtherData } from '@/utils/hooks/useOtherData';
 import dayjs from 'dayjs';
-import VditorShow from '@/components/VditorEdit';
+import VditorEdit from '@/components/VditorEdit';
 import { useUnmount } from 'ahooks';
 const Article: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -200,7 +196,7 @@ const Article: React.FC = () => {
       </div>
 
       {/* 内容编辑区 */}
-      <VditorShow onChange={setText} />
+      <VditorEdit onChange={setText} />
       <div className={s.editBox}>
         {/* 输入区 */}
         {/* <div

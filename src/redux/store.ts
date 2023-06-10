@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import articlesReducer from './features/article/articlesSlice';
-import tagsReducer from './features/article/tagsSlice';
-import seriesReducer from './features/article/seriesSlice';
-import userReducer from './features/article/userSlice';
+import articlesReducer from './features/articlesSlice';
+import tagsReducer from './features/tagsSlice';
+import seriesReducer from './features/seriesSlice';
+import userReducer from './features/userSlice';
 import { isDevelopment } from '@/constant';
 const store = configureStore({
   // 默认包含异步中间件

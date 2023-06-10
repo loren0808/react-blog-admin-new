@@ -1,11 +1,11 @@
 import {
   receiveAllSeries,
   updateSeries
-} from '@/redux/features/article/seriesSlice';
+} from '@/redux/features/seriesSlice';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { useMount, useRequest } from 'ahooks';
 import { getAllSeries } from '../apis/series';
-import { receiveAllTags, updateTags } from '@/redux/features/article/tagsSlice';
+import { receiveAllTags, updateTags } from '@/redux/features/tagsSlice';
 import { getAllTags } from '../apis/tags';
 
 export const useOtherData = () => {

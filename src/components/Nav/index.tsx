@@ -10,7 +10,7 @@ import {
 import s from './index.module.scss';
 import { Button } from '@arco-design/web-react';
 import { useAppDispatch } from '@/redux/hooks';
-import { resetToken } from '@/redux/features/article/userSlice';
+import { resetToken } from '@/redux/features/userSlice';
 
 const Nav: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -96,7 +96,7 @@ const Nav: React.FC = () => {
       </ul>
       <div className={s.exit} onClick={() => exit()}>
         <IconExport />
-        <span>退出登录</span>
+        <span className={s.exitText}>退出登录</span>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import { Button, Input, Tag, Message } from '@arco-design/web-react';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import s from './index.module.scss';
 import { IconDelete } from '@arco-design/web-react/icon';
-import { update } from '@/redux/features/article/articlesSlice';
+import { update } from '@/redux/features/articlesSlice';
 interface TagCardProps {
   tagRun: () => void;
   tagLoading: boolean;

@@ -12,7 +12,7 @@ import {
   receiveAllArticles,
   receiveTotal,
   update
-} from '@/redux/features/article/articlesSlice';
+} from '@/redux/features/articlesSlice';
 import { useRequest, useMount } from 'ahooks';
 import PageHeader from '@/components/PageHeader';
 import { useNavigate } from 'react-router-dom';
