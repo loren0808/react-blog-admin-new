@@ -15,26 +15,35 @@ export default ({ requireLogin, to, children }: Props) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   let isLogin = false;
+  let loading = false;
   if (refreshToken) {
     isLogin = true;
   } else {
     const tokenFromLocalStorage = window.localStorage.getItem('__token');
     if (tokenFromLocalStorage) {
-      auth(tokenFromLocalStorage).then((res) => {
-        if (res.status === 200) {
-          dispatch(
-            receiveToken({
-              token: res.data.token,
-              refreshToken: res.data.refreshToken
-            })
-          );
-          window.localStorage.setItem('__token', res.data.refreshToken);
-          navigate(location.pathname);
+      loading = true;
+      auth(tokenFromLocalStorage).then(
+        (res) => {
+          loading = false;
+          if (res.status === 200) {
+            dispatch(
+              receiveToken({
+                token: res.data.token,
+                refreshToken: res.data.refreshToken
+              })
+            );
+            window.localStorage.setItem('__token', res.data.refreshToken);
+            navigate(location.pathname);
+          }
+        },
+        (err) => {
+          console.log(err);
+          loading = false;
         }
-      });
+      );
     }
   }
-  return isLogin ? (
+  return isLogin || loading ? (
     children
   ) : (
     <Navigate to={to} state={{ from: location }} replace />

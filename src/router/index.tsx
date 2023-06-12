@@ -35,7 +35,7 @@ const routes = [
       {
         path: 'articles',
         element: <Articles />
-      },
+      }
     ]
   },
   {
